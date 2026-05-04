@@ -291,7 +291,30 @@ ax.legend(ncol=2,title='$H_0$ = 58 kA/m',loc='lower right',frameon=True,shadow=T
 
 ax.set_xlabel('t (s)')    
 plt.suptitle('93% CPA (475 uL) - 7% NF@cit_13h conc (25 uL)')
+#%% por ultimo, veo como se comporta con la 10% de sintesis 
+    # NF@cit_13h 6_CPA90_FF10_NF-cit_260421AV 
+    
+dir_6 = '6_CPA90_FF10_NF-cit_260421AV'
+paths_6 = glob(dir_6+'/*csv')
+paths_6.sort()
 
+fig06, ax =plt.subplots(1,1,figsize=(9,5),constrained_layout=True,sharey=True,sharex=True)
+
+for i,r in enumerate(paths_6):
+    _,t,T, _ = lector_templog(r)
+    ax.plot(t,T,'.-',label='NF@cit_13h 260421AV 7.0 g/L')
+
+ax.grid()
+ax.set_ylabel('T (ºC)')
+ax.set_xlim(0,)
+ax.axhline(y=0,c='k',lw=0.8,label='T = 0°C')
+ax.axhline(-43,c='k',ls='--',lw=0.8,label='T$_m$ = -43°C')
+ax.axhline(-121,c='k',ls='-.',lw=0.8,label='T$_g$ = -121°C')
+
+ax.legend(ncol=2,title='$H_0$ = 58 kA/m',loc='lower right',frameon=True,shadow=True)
+
+ax.set_xlabel('t (s)')    
+plt.suptitle('90% CPA (450 uL) - 10% NF@cit_13h Autoclave viejo (50 uL)')
 
 #%% Salvo figuras
 fig00.savefig('calentamiento_80CPA_20FF_152dA.png',dpi=300)
@@ -299,31 +322,29 @@ fig02.savefig('calentamiento_85CPA_15FF_152dA.png',dpi=300)
 fig03.savefig('calentamiento_87CPA_13FF_152dA.png',dpi=300)
 fig04.savefig('calentamiento_90CPA_10FF_152dA.png',dpi=300)
 fig05.savefig('calentamiento_93CPA_7FF_152dA.png',dpi=300)
-
-# %% Comparo lo expuesto a 152dA
-
-paths_400_100 = glob(dir_5+'/*152dA*templog*',recursive=True)
-paths_425_75  = glob(dir_2+'/*152dA*templog*',recursive=True)
-paths_450_50  = glob(dir_3+'/*152dA*templog*',recursive=True)
-paths_475_25  = glob(dir_4+'/*152dA*templog*',recursive=True)
+fig06.savefig('calentamiento_90CPA_10FF_152dA.png',dpi=300)
 
 
-fig2, axs =plt.subplots(3,1,figsize=(12,9),constrained_layout=True,sharex=True)
-
-for j in range(3):
-    _,t,T, _ = lector_templog(paths_400_100[j])
-    axs[j].plot(t,T,'.-',label='80% CPA - 20% FF')
-
-
-    _,t,T, _ = lector_templog(paths_425_75[j])
-    axs[j].plot(t,T,'.-',label='85% CPA - 15% FF')
-
-    
-    _,t,T, _ = lector_templog(paths_450_50[j])
-    axs[j].plot(t,T,'.-',label='90% CPA - 10% FF')
-
-    _,t,T, _ = lector_templog(paths_475_25[j])
-    axs[j].plot(t,T,'.-',label='95% CPA -  5% FF')
+#%% Comparo los 6 calentamientos
+fig3, axs =plt.subplots(6,1,figsize=(12,15),constrained_layout=True,sharex=True)
+for i,r in enumerate(paths_1):
+    _,t,T, _ = lector_templog(paths_1[j])
+    axs[0].plot(t,T,'.-',label='80% CPA - 20% FF')
+for i,r in enumerate(paths_2):
+    _,t,T, _ = lector_templog(r)
+    axs[1].plot(t,T,'.-',label='85% CPA - 15% FF')
+for i,r in enumerate(paths_3):
+    _,t,T, _ = lector_templog(r)
+    axs[2].plot(t,T,'.-',label='87% CPA - 13% FF')
+for i,r in enumerate(paths_4):
+    _,t,T, _ = lector_templog(r)
+    axs[3].plot(t,T,'.-',label='90% CPA - 10% FF')
+for i,r in enumerate(paths_5):
+    _,t,T, _ = lector_templog(r)
+    axs[4].plot(t,T,'.-',label='93% CPA - 7% FF')
+for i,r in enumerate(paths_6):
+    _,t,T, _ = lector_templog(r)
+    axs[5].plot(t,T,'.-',label='90% CPA - 10% NF@cit_13h Autoclave')
 
 
 for a in axs:
@@ -334,41 +355,8 @@ for a in axs:
     a.axhline(-43,c='k',ls='--',lw=0.8,label='T$_m$ = -43°C')
     a.axhline(-121,c='k',ls='-.',lw=0.8,label='T$_g$ = -121°C')
     a.legend(ncol=2,frameon=True,shadow=True)
-ax3.set_xlabel('t (s)')
-plt.suptitle('Comparación de calentamientos a $H_0$ = 58 kA/m (152 dA) - $f$ = 300 kHz')
-plt.savefig('comparacion_calentamientos_152dA_400-100_425-75_450-50_475-25.png',dpi=300)
-
-
-# fig, axs =plt.subplots(3,1,figsize=(12,9),constrained_layout=True,sharex=True)
-
-# for j in range(3):
-#     _,t,T, _ = lector_templog(paths_400_100[j])
-#     axs[j].plot(t,T,'.-',label='CPA 400 uL - FF 100 uL')
-
-
-#     _,t,T, _ = lector_templog(paths_425_75[j])
-#     axs[j].plot(t,T,'.-',label='CPA 425 uL - FF 75 uL')
-
-    
-#     _,t,T, _ = lector_templog(paths_450_50[j])
-#     axs[j].plot(t,T,'.-',label='CPA 450 uL - FF 50 uL')
-
-#     _,t,T, _ = lector_templog(paths_475_25[j])
-#     axs[j].plot(t,T,'.-',label='CPA 475 uL - FF 25 uL')
-
-
-# for a in axs:
-#     a.grid()
-#     a.set_ylabel('T (ºC)')
-#     a.set_xlim(0,250)
-#     a.axhline(y=0,c='k',lw=0.8,label='T = 0°C')
-#     a.axhline(-43,c='k',ls='--',lw=0.8,label='T$_m$ = -43°C')
-#     a.axhline(-121,c='k',ls='-.',lw=0.8,label='T$_g$ = -121°C')
-#     a.legend(ncol=2,frameon=True,shadow=True)
-# ax3.set_xlabel('t (s)')
-# plt.suptitle('Comparación de calentamientos a $H_0$ = 58 kA/m (152 dA) - $f$ = 300 kHz')
-# plt.savefig('comparacion_calentamientos_152dA_400-100_425-75_450-50_475-25.png',dpi=300)
-# %% Idem pero cambio labels
-
+axs[-1].set_xlabel('t (s)')
+plt.suptitle('Comparación de calentamientos a $H_0$ = 58 kA/m - $f$ = 300 kHz')
+plt.savefig('comparacion_calentamientos_300kHz_58kAm.png',dpi=300)
 
 # %%
