@@ -185,7 +185,7 @@ Vol = 500 uL
 dir_1 = '1_CPA80_FF20'
 paths_1 = glob(dir_1+'/*csv')
 paths_1.sort()
-fig00, ax =plt.subplots(1,1,figsize=(9,5),constrained_layout=True,sharey=True,sharex=True)
+fig00, ax =plt.subplots(1,1,figsize=(12,5),constrained_layout=True,sharey=True,sharex=True)
 
 for i,r in enumerate(paths_1):
     _,t,T, _ = lector_templog(r)
@@ -201,12 +201,13 @@ ax.axhline(-121,c='k',ls='-.',lw=0.8,label='T$_g$ = -121°C')
 ax.legend(ncol=2,title='$H_0$ = 58 kA/m',loc='lower right',frameon=True,shadow=True)
 
 ax.set_xlabel('t (s)')
-plt.suptitle('80% CPA (400 uL) - 20% NF@cit_13h conc (100 uL)') 
+plt.suptitle('80% CPA (400 uL) - 20% NF@cit_13h conc (100 uL)')
+plt.savefig('presentacion_g3m_80CPA_20FF_152dA.png',dpi=300) 
 #%% 85 CPA - 15 FF - NF@cit_13h conc
 dir_2 = '2_CPA85_FF15'
 paths_2 = glob(dir_2+'/*csv')
 paths_2.sort()
-fig02, ax =plt.subplots(1,1,figsize=(9,5),constrained_layout=True,sharey=True,sharex=True)
+fig02, ax =plt.subplots(1,1,figsize=(12,5),constrained_layout=True,sharey=True,sharex=True)
 
 for i,r in enumerate(paths_2):
     _,t,T, _ = lector_templog(r)
@@ -223,11 +224,12 @@ ax.legend(ncol=2,title='$H_0$ = 58 kA/m',loc='lower right',frameon=True,shadow=T
 
 ax.set_xlabel('t (s)')    
 plt.suptitle('85% CPA (425 uL) - 15% NF@cit_13h conc (75 uL)')  
+plt.savefig('presentacion_g3m_85CPA_15FF_152dA.png',dpi=300)
 #%% 87 CPA - 13 FF - NF@cit_13h conc
 dir_3 = '3_CPA87_FF13'
 paths_3 = glob(dir_3+'/*csv')
 paths_3.sort()    
-fig03, ax =plt.subplots(1,1,figsize=(9,5),constrained_layout=True,sharey=True,sharex=True)
+fig03, ax =plt.subplots(1,1,figsize=(12,5),constrained_layout=True,sharey=True,sharex=True)
 
 for i,r in enumerate(paths_3):
     _,t,T, _ = lector_templog(r)
@@ -244,13 +246,13 @@ ax.legend(ncol=2,title='$H_0$ = 58 kA/m',loc='lower right',frameon=True,shadow=T
 
 ax.set_xlabel('t (s)')
 plt.suptitle('87% CPA (435 uL) - 13% NF@cit_13h conc (65 uL)')
-
+plt.savefig('presentacion_g3m_87CPA_13FF_152dA.png',dpi=300)
 #%% 90 CPA - 10 FF - NF@cit_13h conc 
 dir_4 = '4_CPA90_FF10'
 paths_4 = glob(dir_4+'/*csv')
 paths_4.sort()
 
-fig04, ax =plt.subplots(1,1,figsize=(9,5),constrained_layout=True,sharey=True,sharex=True)
+fig04, ax =plt.subplots(1,1,figsize=(12,5),constrained_layout=True,sharey=True,sharex=True)
 
 for i,r in enumerate(paths_4):
     _,t,T, _ = lector_templog(r)
@@ -268,13 +270,13 @@ ax.legend(ncol=2,title='$H_0$ = 58 kA/m',loc='lower right',frameon=True,shadow=T
 
 ax.set_xlabel('t (s)')
 plt.suptitle('90% CPA (450 uL) - 10% NF@cit_13h conc (50 uL)')
-
+plt.savefig('presentacion_g3m_90CPA_10FF_152dA.png',dpi=300)
 #%% 93 CPA - 7 FF - NF@cit_13h conc
 dir_5 = '5_CPA93_FF07'
 paths_5 = glob(dir_5+'/*csv')
 paths_5.sort()
 
-fig05, ax =plt.subplots(1,1,figsize=(9,5),constrained_layout=True,sharey=True,sharex=True)
+fig05, ax =plt.subplots(1,1,figsize=(12,5),constrained_layout=True,sharey=True,sharex=True)
 
 for i,r in enumerate(paths_5):
     _,t,T, _ = lector_templog(r)
@@ -291,6 +293,7 @@ ax.legend(ncol=2,title='$H_0$ = 58 kA/m',loc='lower right',frameon=True,shadow=T
 
 ax.set_xlabel('t (s)')    
 plt.suptitle('93% CPA (475 uL) - 7% NF@cit_13h conc (25 uL)')
+plt.savefig('presentacion_g3m_93CPA_7FF_152dA.png',dpi=300)
 #%% por ultimo, veo como se comporta con la 10% de sintesis 
     # NF@cit_13h 6_CPA90_FF10_NF-cit_260421AV 
     
@@ -298,7 +301,7 @@ dir_6 = '6_CPA90_FF10_NF-cit_260421AV'
 paths_6 = glob(dir_6+'/*csv')
 paths_6.sort()
 
-fig06, ax =plt.subplots(1,1,figsize=(9,5),constrained_layout=True,sharey=True,sharex=True)
+fig06, ax =plt.subplots(1,1,figsize=(12,5),constrained_layout=True,sharey=True,sharex=True)
 
 for i,r in enumerate(paths_6):
     _,t,T, _ = lector_templog(r)
@@ -315,20 +318,20 @@ ax.legend(ncol=2,title='$H_0$ = 58 kA/m',loc='lower right',frameon=True,shadow=T
 
 ax.set_xlabel('t (s)')    
 plt.suptitle('90% CPA (450 uL) - 10% NF@cit_13h Autoclave viejo (50 uL)')
-
+plt.savefig('presentacion_g3m_otra_sintesis_90CPA_10FF_152dA.png',dpi=300)
 #%% Salvo figuras
-fig00.savefig('calentamiento_80CPA_20FF_152dA.png',dpi=300)
-fig02.savefig('calentamiento_85CPA_15FF_152dA.png',dpi=300)
-fig03.savefig('calentamiento_87CPA_13FF_152dA.png',dpi=300)
-fig04.savefig('calentamiento_90CPA_10FF_152dA.png',dpi=300)
-fig05.savefig('calentamiento_93CPA_7FF_152dA.png',dpi=300)
-fig06.savefig('calentamiento_90CPA_10FF_152dA.png',dpi=300)
+# fig00.savefig('calentamiento_80CPA_20FF_152dA.png',dpi=300)
+# fig02.savefig('calentamiento_85CPA_15FF_152dA.png',dpi=300)
+# fig03.savefig('calentamiento_87CPA_13FF_152dA.png',dpi=300)
+# fig04.savefig('calentamiento_90CPA_10FF_152dA.png',dpi=300)
+# fig05.savefig('calentamiento_93CPA_7FF_152dA.png',dpi=300)
+# fig06.savefig('calentamiento_90CPA_10FF_152dA.png',dpi=300)
 
 
 #%% Comparo los 6 calentamientos
 fig3, axs =plt.subplots(6,1,figsize=(12,15),constrained_layout=True,sharex=True)
 for i,r in enumerate(paths_1):
-    _,t,T, _ = lector_templog(paths_1[j])
+    _,t,T, _ = lector_templog(paths_1[i])
     axs[0].plot(t,T,'.-',label='80% CPA - 20% FF')
 for i,r in enumerate(paths_2):
     _,t,T, _ = lector_templog(r)
